@@ -1,0 +1,287 @@
+:root{
+    --green: #0f9621;
+    --white: #ffffff;
+    --blue: #0021c9;
+    --black:  rgb(0, 0, 0);
+    --grey2: rgb(221, 221, 221);
+    --grey: #f7f7f7;
+    --font-bold: 'Gilroy-Bold';
+    --font-regular: 'Gilroy-Regular';
+}
+
+@font-face {
+    font-family: 'Gilroy-Bold';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Gilroy-Bold'), url('https://fonts.cdnfonts.com/s/16219/Gilroy-Bold.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'Gilroy-Regular';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Gilroy-Regular'), url('https://fonts.cdnfonts.com/s/16219/Gilroy-Regular.woff') format('woff');
+}
+
+@page {
+    /*size: 21cm 29.7cm;*/
+    /*margin: 30mm 20mm 30mm 20mm;*/
+    size: 28cm 22cm;
+    margin: 1cm 1cm 1cm 1cm;
+    /* change the margins as you want them to be. */
+}
+
+.page-break-inside {
+    page-break-inside: avoid;
+}
+
+ion-row {
+    page-break-inside: avoid;
+}
+
+.logo-personal {
+    padding: 5px 5px 5px 5px;
+    /*width: 190px;*/
+    height: 48px;
+}
+.font-size-11 {
+    font-size: 11px;
+}
+.font-size-12 {
+    font-size: 12px;
+}
+.font-weight-bold {
+    font-weight: bold;
+}
+.font-weight-normal {
+    font-weight: normal;
+}
+.font-weight-light {
+    font-weight: 300 !important;
+}
+.font-color-black {
+    color: var(--black);
+}
+.font-color-white {
+    color: white;
+}
+.font-color-green {
+    color: var(--green);
+}
+.font-color-light-green {
+    color: lightgreen;
+}
+.font-color-gray {
+    color: #454444;
+}
+.font-color-blue {
+    color: blue;
+}
+.font-color-red {
+    color: red;
+}
+
+
+.font-title-rp-spending:before {
+    padding-right: -3px;
+    color: var(--red);
+    content: "-Rp.";
+    display: inline;
+}
+
+.font-title-rp-income:before {
+    padding-right: 3px;
+    color: var(--blue);
+    content: "Rp.";
+    display: inline;
+}
+
+.font-rp-spending:before {
+    padding-right: -3px;
+    margin-left: -30px;
+    color: var(--red);
+    content: "-Rp.";
+    display: inline;
+}
+
+.font-rp-normal:before {
+    padding-right: -3px;
+    margin-left: -30px;
+    color: var(--black);
+    content: "Rp.";
+    display: inline;
+}
+
+.font-rp-income:before {
+    padding-right: 3px;
+    margin-left: -30px;
+    color: var(--blue);
+    content: "Rp.";
+    display: inline;
+}
+.font-rp-green:before {
+    padding-right: 3px;
+    margin-left: -30px;
+    color: var(--green);
+    content: "Rp.";
+    display: inline;
+}
+.header-title{
+    display: block;
+    padding: 8px 8px 8px 8px;
+    background-color:var(--blue);
+    -webkit-print-color-adjust: exact;
+    text-align: left;
+    color: white;
+    border-bottom: solid #e3e3e3 1px;
+}
+.header-subtitle{
+    display: block;
+    padding: 8px 8px 8px 8px;
+    background-color:var(--blue);
+    -webkit-print-color-adjust: exact;
+    text-align: left;
+    color: white;
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+
+.header-subtitle:nth-child(1){
+    margin-top: 0px;
+}
+
+.padding-5px {
+    padding: 5px 5px 5px 5px;
+}
+.padding-10px {
+    padding: 10px 10px 10px 10px;
+}
+.div-center{
+    text-align: center;
+}
+
+.flex-align-center-right{
+    text-align: right;
+    align-items: center;
+    display: inline-flex;
+    justify-content: flex-end;
+    align-self: auto;
+}
+
+/*************************/
+ion-list {
+    margin: 0px;
+    background-color: white;
+    -webkit-print-color-adjust: exact;
+    vertical-align: top;
+}
+
+ion-list ion-row {
+    display: flex;
+    align-items: flex-start;
+    width: 100%;
+    padding: 0px;
+    margin-top: 10px;
+}
+
+ion-list ion-row ion-col {
+    display: flex;
+    justify-content: flex-start;
+    align-self: flex-start;
+    vertical-align: text-top;
+    font-size: 13px;
+    /*border-bottom: 1px solid var(--grey);*/
+}
+
+ion-list ion-row ion-col:nth-child(1) {
+    width: 7%;
+    color: var(--blue);
+    /*background-color: rebeccapurple;*/
+}
+ion-list ion-row ion-col:nth-child(2) {
+    flex-direction: column;
+    width: 63%;
+    /*background-color: #0f6848;*/
+}
+
+ion-list ion-row ion-col:nth-child(2) div {
+    /*border-bottom: solid red 1px;*/
+    padding: 0px;
+    font-size: 11px;
+    width: 100%;
+    height: 100%;
+}
+
+ion-list ion-row ion-col:nth-child(3) {
+    width: 30%;
+    /*background-color: lawngreen;*/
+}
+
+devider {
+    top: 0px;
+    position: relative;
+    display: block;
+    width: 100%;
+    height: 5px;
+    background-color: var(--grey);
+    -webkit-print-color-adjust: exact;
+    opacity: 1;
+    content: " ";
+    margin-bottom: 20px;
+    margin-top: 10px;
+}
+
+.list-item-amount {
+    margin-left: auto;
+}
+
+.list-item-amount div{
+    display: inline-block;
+    text-align: right;
+    vertical-align: top;
+    margin-left: auto;
+    padding:1px;
+    position: relative;
+    width: 80%;
+    /*background-color: yellow;*/
+    word-break: break-all;
+}
+.list-item-note div:nth-child(1){
+    font-size: 11px;
+}
+.list-item-note div:nth-child(2){
+    font-size: 9px;
+}
+.list-item-note div:nth-child(3){
+    font-size: 9px;
+}
+
+.list-date ion-col:nth-child(1) {
+    align-self: stretch;
+    height: 40px;
+    font-size: 28px;
+}
+
+.list-date ion-col:nth-child(1) p{
+    padding-top: 0px;
+    margin-top: -7px;
+    /*background-color: #1fb6ff;*/
+}
+
+.list-date ion-col:nth-child(2)  {
+    font-size: 11px;
+}
+
+.list-date ion-col:nth-child(3)  {
+    font-size: 11px;
+}
+
+.list-date{
+    font-weight: bold;
+}
+.col-icon {
+    width: 32px;
+    rotation: 180deg
+}
+
+.noBreak { page-break-inside: avoid;  }

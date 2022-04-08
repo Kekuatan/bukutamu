@@ -1,0 +1,271 @@
+body {
+    line-height: 1.6;
+    letter-spacing: 0.05em;
+    margin: 0;
+    font-family: var(--font-regular);
+}
+
+ion-header{
+    display: block;
+    height:150px;
+    background-color:var(--blue);
+    -webkit-print-color-adjust: exact;
+}
+ion-toolbar{
+    display: flex;
+    position: absolute;
+    margin: 20px 40px;
+    justify-content: center;
+    align-items: center;
+    color: #1181e3;
+}
+ion-title{
+    color: white;
+    font-size: 16px;
+    font-family: 'Gilroy-Bold';
+}
+
+
+.header-md::after {
+    top:147px;
+    position:absolute;
+    width: 100%;
+    height: 1px;
+    background-color:var(--grey);
+    -webkit-print-color-adjust: exact;
+    opacity: .2;
+    content: " ";
+}
+
+/* tab */
+
+mat-tab-header{
+    display:flex;
+    overflow:hidden;
+    position:relative;
+    flex-shrink:0;
+    background-color:var(--blue);
+    -webkit-print-color-adjust: exact;
+    color:white;
+    font-family: var(--font-regular);
+}
+
+.mat-tab-label-container{
+    display: flex;
+    flex-grow: 1;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.mat-tab-list {
+    transform: translateX(0px);
+    flex-grow: 1;
+    position: relative;
+    transition: transform 500ms cubic-bezier(0.35, 0, 0.25, 1);
+}
+.mat-tab-labels{
+    display:flex;
+}
+
+.mat-tab-label {
+    height: 48px;
+    padding: 0 24px;
+    cursor: pointer;
+    box-sizing: border-box;
+    opacity: .6;
+    width: 160px;
+    text-align: center;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    white-space: nowrap;
+    position: relative;
+}
+
+.mat-tab-label-content{
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    white-space: nowrap;
+}
+
+.mat-ink-bar{
+    visibility: visible; left: 0px; width: 160px;
+    background-color:var(--green);
+    -webkit-print-color-adjust: exact;
+    position: absolute;
+    bottom: 0;
+    height: 5px;
+    transition: 500ms cubic-bezier(0.35, 0, 0.25, 1);
+}
+
+/*body*/
+mat-tab-body{
+    font: var(--font-regular);
+    position: relative;
+    transition: height 500ms cubic-bezier(0.35, 0, 0.25, 1);
+}
+
+.grid-date-picker{
+    width: auto;
+    height: 13%;
+    background-color: var(--ion-color-light-grey-bukuku);
+    -webkit-print-color-adjust: exact;
+    padding: 0px;
+}
+
+/*date row grid-date-picker*/
+.grid-date-picker ion-row{
+    background-color: #ddd;
+    -webkit-print-color-adjust: exact;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.grid-date-picker .row-date{
+    padding: 10px;
+    height:75px;
+}
+
+.grid-date-picker ion-col{
+    padding: 0px;
+    display: flex;
+    border: none;
+    align-items: center;
+    width: 35vw
+}
+.grid-date-picker ion-datetime{
+    padding: 0px;
+    display: flex;
+    align-items: center;
+    width: 35vw;
+}
+.grid-date-picker ion-datetime input{
+    border: none;
+    outline: none;
+    background-color: #ddd;
+    -webkit-print-color-adjust: exact;
+    border-bottom: 1px solid var(--grey);
+    font: var(--font-bold);
+    font-weight: bold;
+}
+
+.grid-date-picker .strip{
+    padding: 0px;
+    color:var(--grey);
+    display: flex;
+    align-items: center;
+    width: 10vw
+}
+
+.grid-date-picker .strip .datetime-strip{
+    font: 400 14px/20px Roboto, "Helvetica Neue", sans-serif;
+    letter-spacing: normal;
+    text-align: center;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    font-size: 30px;
+}
+
+.grid-date-picker .col-button-grid-date {
+    padding: 0px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 10vw;
+}
+
+/*item list*/
+/*
+ion-list{
+    margin:0px;
+    padding: 8px 0px;
+    background-color: white;
+    -webkit-print-color-adjust: exact;
+    text-align: center;
+}
+devider{
+    top:0px;
+    position:relative;
+    display: block;
+    width: 100%;
+    height: 5px;
+    background-color:var(--grey);
+    -webkit-print-color-adjust: exact;
+    opacity: 1;
+    content: " ";
+}
+
+ion-list ion-row{
+    display:flex;
+    padding-top:10px;
+    width: 100vw;
+    justify-content: center;
+}
+ion-list ion-row ion-col{
+    padding-bottom: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 13px;
+    border-bottom: 1px solid var(--grey);
+    height: 40px;
+}
+ion-list ion-row:last-child ion-col{
+    border:none;
+}
+ion-list ion-row ion-col:nth-child(1){
+    width:25vw;
+    color:var(--blue);
+    font-weight: bolder;
+    justify-content: center;
+}
+ion-list ion-row ion-col:nth-child(2){
+    width:40vw;
+}
+ion-list ion-row ion-col:nth-child(3){
+    color: inherit;
+    width:25vw;
+    justify-content: flex-end;
+}
+
+.font-rp-spending:before{
+    padding-right: 3px;
+    color:red;
+    content : "-Rp.";
+}
+
+.font-rp-income:before{
+    padding-right: 3px;
+    color:green;
+    content : "Rp.";
+}
+
+.font-red{
+    color:red !important;
+}
+
+.font-green{
+    color:green !important;
+}
+*/
+
+
+.report-transaksi ion-list ion-row ion-col:nth-child(1) {
+    width: 15%;
+    color: var(--blue);
+    /*background-color: rebeccapurple;*/
+}
+.report-transaksi ion-list ion-row ion-col:nth-child(2) {
+    flex-direction: column;
+    width: 55%;
+    /*background-color: #0f6848;*/
+}
+
+.report-transaksi ion-list ion-row ion-col:nth-child(3) {
+    width: 30%;
+    /*background-color: lawngreen;*/
+}

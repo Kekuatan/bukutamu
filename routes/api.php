@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\GuestBookController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Route;
@@ -17,6 +18,15 @@ use Illuminate\Support\Facades\Route;
 
 Route::post('/signup', (\App\Http\Controllers\Api\Auth\SignUpController::class));
 Route::post('/login', (\App\Http\Controllers\Api\Auth\LoginController::class));
+
+Route::get('/home', [\App\Http\Controllers\Api\HomeController::class,'homeContent']);
+
+Route::group([
+    'middleware' => ['client']
+], function () {
+    Route::resource('/guest', GuestBookController::class)->only(['index','store']);
+    Route::post('/update/guest', [\App\Http\Controllers\Api\HomeController::class,'updateGuest']);
+});
 Route::post('/client', function(Request $request){
     $baseUri = 'http://bank-bca.test/';
     $clientId = '95cac743-b424-40e9-8154-6842f5b4af3c';
@@ -32,13 +42,15 @@ Route::post('/client', function(Request $request){
     return response()->json($response);
 });
 
+
+
+
 Route::group([
     'middleware' => ['auth:api']
 ], function () {
     Route::get('/user', function (Request $request) {
         return $request->user();
     });
-
 });
 
 
