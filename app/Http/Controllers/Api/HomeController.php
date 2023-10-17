@@ -14,14 +14,21 @@ class HomeController extends Controller
 {
     public function homeContent(Request $request)
     {
-        $clientId = '9601f8f4-74e7-413c-8152-8991f94e2bac';
-        $clientSecret = 'QLfWQSMbPaXbKpQdOSR75DTxlULtJ4C2w5bFIJxR';
-        $baseUri = 'http://parkir-server.test';
+        $request->validate([
+            "client_id" => 'required|string',
+            "client_secret" => 'required|string',
+        ]);
+        
+        $baseUri = env('APP_URL');
 
-        $oauth = Http::asForm()->withBasicAuth($clientId, $clientSecret)
+        $oauth = Http::asForm()->withBasicAuth( $request->client_id, $request->client_secret)
             ->post($baseUri . '/oauth/token', [
             'grant_type' => 'client_credentials',
         ])->json();
+
+        if(blank($oauth) || blank( $oauth['access_token'] ?? null)){
+            return response()->json(['message'=> "Authentication errror!"], 422);
+        }
 
 
 

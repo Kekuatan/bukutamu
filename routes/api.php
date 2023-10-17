@@ -16,34 +16,18 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::post('/signup', (\App\Http\Controllers\Api\Auth\SignUpController::class));
-Route::post('/login', (\App\Http\Controllers\Api\Auth\LoginController::class));
-
-Route::get('/home', [\App\Http\Controllers\Api\HomeController::class,'homeContent']);
+// Route::post('/signup', (\App\Http\Controllers\Api\Auth\SignUpController::class));
+// Route::post('/login', (\App\Http\Controllers\Api\Auth\LoginController::class));
+Route::post('/home', [\App\Http\Controllers\Api\HomeController::class,'homeContent']);
 
 Route::group([
     'middleware' => ['client']
 ], function () {
     Route::resource('/guest', GuestBookController::class)->only(['index','store']);
+    Route::get('/guest/{id}' ,[GuestBookController::class, 'show']);
     Route::post('/update/guest', [\App\Http\Controllers\Api\HomeController::class,'updateGuest']);
+
 });
-Route::post('/client', function(Request $request){
-    $baseUri = 'http://bank-bca.test/';
-    $clientId = '95cac743-b424-40e9-8154-6842f5b4af3c';
-    $clientSecret = '0ljshfTMsDLox8f4SXFkvMAsNucl1NV4eyZwxieT';
-
-    $response = Http::asForm()->post($baseUri . '/oauth/token', [
-        'grant_type' => 'client_credentials',
-        'client_id' => $clientId,
-        'client_secret' => $clientSecret,
-//            'scope' => '',
-    ]);
-
-    return response()->json($response);
-});
-
-
-
 
 Route::group([
     'middleware' => ['auth:api']

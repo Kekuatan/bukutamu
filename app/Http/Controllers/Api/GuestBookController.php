@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Enums\DiskEnum;
+use App\Enums\GuestBookEnum;
 use App\Http\Controllers\Controller;
 use App\Models\GuestBook;
 use Carbon\Carbon;
@@ -31,15 +32,15 @@ class GuestBookController extends Controller
     {
         $request->validate([
             'name' => 'required|string',
-            'no_barcode' => 'required|string|unique:guest_books,no_barcode',
+            'no_barcode' => 'nullable|string|unique:guest_books,no_barcode',
             'description' => 'nullable|string',
             'photo' =>  'nullable|mimes:jpeg,jpg,png,gif,svg|max:2048',
         ]);
 
         $data = [
             'name' => $request->name,
-            'no_barcode' => $request->no_barcode,
-            'description' => $request->description
+            'no_barcode' => $request->no_barcode ?? null,
+            'description' => $request->description ?? GuestBookEnum::DEFAULT_DESCRIPTION
         ];
 
         if ($request->has('photo')) {
@@ -65,13 +66,21 @@ class GuestBookController extends Controller
      */
     public function show($id, Request $request)
     {
-        $guestBook = GuestBook::where('id','=',$request->id)->first();
+        $guestBook = GuestBook::where('no_barcode','=',$request->id)
+        ->orWhere('id','=',$request->id)
+        ->orderBy('created_at')
+        ->first();
 
         if (blank($guestBook)){
             return response()->json(['message' => 'Data not found'], 422);
-        }else{
-            return response()->json($guestBook);
         }
+
+        if (!blank($guestBook->scan_at)){
+            return response()->json(['message' => 'Barcode has been use']);
+        }
+
+            return response()->json($guestBook);
+
     }
 
     /**
