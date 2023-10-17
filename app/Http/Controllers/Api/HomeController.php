@@ -14,9 +14,9 @@ class HomeController extends Controller
 {
     public function homeContent(Request $request)
     {
-        $clientId = '9601f8f4-74e7-413c-8152-8991f94e2bac';
-        $clientSecret = 'QLfWQSMbPaXbKpQdOSR75DTxlULtJ4C2w5bFIJxR';
-        $baseUri = 'http://parkir-server.test';
+        $clientId = '96060b44-826d-48b2-9e0b-17d92dcfc8c7';
+        $clientSecret = 'yfd0OV0PKzZtPrAiEJfA6awkHeIgEH1YdGxPIsIV';
+        $baseUri = 'http://103.157.26.133';
 
         $oauth = Http::asForm()->withBasicAuth($clientId, $clientSecret)
             ->post($baseUri . '/oauth/token', [
