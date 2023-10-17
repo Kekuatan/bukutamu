@@ -14,14 +14,27 @@ class HomeController extends Controller
 {
     public function homeContent(Request $request)
     {
+<<<<<<< HEAD
         $clientId = '96060b44-826d-48b2-9e0b-17d92dcfc8c7';
         $clientSecret = 'yfd0OV0PKzZtPrAiEJfA6awkHeIgEH1YdGxPIsIV';
         $baseUri = 'http://103.157.26.133';
+=======
+        $request->validate([
+            "client_id" => 'required|string',
+            "client_secret" => 'required|string',
+        ]);
+        
+        $baseUri = env('APP_URL');
+>>>>>>> d120b230ea8a3e6f5cd379da51f07e6a4f646dc5
 
-        $oauth = Http::asForm()->withBasicAuth($clientId, $clientSecret)
+        $oauth = Http::asForm()->withBasicAuth( $request->client_id, $request->client_secret)
             ->post($baseUri . '/oauth/token', [
             'grant_type' => 'client_credentials',
         ])->json();
+
+        if(blank($oauth) || blank( $oauth['access_token'] ?? null)){
+            return response()->json(['message'=> "Authentication errror!"], 422);
+        }
 
 
 

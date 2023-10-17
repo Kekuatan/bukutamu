@@ -13,17 +13,18 @@ class CreateGuestBooksTable extends Migration
      */
     public function up()
     {
+
         Schema::create('guest_books', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('no_barcode')->unique();
+            $table->string('no_barcode')->nullable()->unique();
 
             $table->text('photo')->nullable();
             $table->string('disk')->nullable();
             $table->string('mime_type')->nullable();
             $table->string('type')->nullable();
 
-            $table->text('description')->nullable();
+            $table->string('description')->nullable();
             $table->dateTime('scan_at')->nullable();
             $table->timestamps();
             $table->softDeletes();
